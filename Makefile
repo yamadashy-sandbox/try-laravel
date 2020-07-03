@@ -4,8 +4,18 @@ help:
 .DEFAULT_GOAL := help
 
 # ==================================================
+# Tests
+# ==================================================
+.PHONY: phpunit
+phpunit: ## phpunit
+	./vendor/bin/phpunit
+
+# ==================================================
 # Code Analysis
 # ==================================================
 .PHONY: phpstan
 phpstan: ## PhpStan
 	./vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G
+.PHONY: phpinsights
+phpinsights: ## phpinsights
+	php artisan insights
